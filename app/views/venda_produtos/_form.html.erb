@@ -1,0 +1,37 @@
+<%= form_with(model: venda_produto) do |form| %>
+  <% if venda_produto.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(venda_produto.errors.count, "error") %> prohibited this venda_produto from being saved:</h2>
+
+      <ul>
+        <% venda_produto.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label 'Total R$', style: "display: block" %>
+    <%= form.label :preco_total, t('valores.moeda', value: '%0.2f' % @venda_produto.preco_total) %>
+  </div>
+
+  <div>
+    <%= form.label 'Quantidade Total', style: "display: block" %>
+    <%= form.label :quantidade_total, t('valores.peso', value: '%0.3f' % @venda_produto.quantidade_total) %>
+  </div>
+
+  <div>
+    <%= form.label 'Forma de Pagamento', style: "display: block" %>
+    <%= form.label :forma_pagamento %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

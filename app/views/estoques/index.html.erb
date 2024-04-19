@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Estoques</h1>
+
+<div class="table-responsive">
+  <table class="text-center table table-striped table-bordered table-hover" id="tabelaEstoque">
+    <thead>
+    <tr>
+      <th class="text-center">Produto</th>
+      <th class="text-center">Fornecedor</th>
+      <th class="text-center">Descrição</th>
+      <th class="text-center">Lote</th>
+      <th class="text-center">Comprado em</th>
+      <th class="text-center">Validade</th>
+      <th class="text-center">Quantidade</th>
+      <th class="text-center">Valor</th>
+      <th class="text-center">Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+  <% @estoques.each do |estoque| %>
+
+      <tr>
+        <%= render estoque %>
+
+        <td id="botao_editar">
+          <%= button_to "Editar", edit_estoque_path(estoque), class: 'btn btn-outline-info', method: :get%>
+        </td>
+        <td id="botao_mostrar"><%= button_to "Mostrar", estoque, class: 'btn btn-outline-info', method: :get %></td>
+      </tr>
+
+  <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= button_to "Novo estoque", new_estoque_path, class: 'btn btn-outline-success', method: :get %>

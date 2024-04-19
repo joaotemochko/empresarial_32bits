@@ -1,0 +1,54 @@
+<%= form_with(model: produto) do |form| %>
+  <% if produto.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+
+      <ul>
+        <% produto.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <% if current_user.admin %>
+  <div class="col-md-4">
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-4">
+    <%= form.label 'Código', style: "display: block" %>
+    <%= form.text_field :codigo, class: 'form-control' %>
+  </div>
+
+  <div class="col-md-4">
+    <%= form.label 'Descrição', style: "display: block" %>
+    <%= form.text_field :desc, class: 'form-control' %>
+  </div>
+
+    <div class="col-md-4">
+      <%= form.label 'Preço (KG ou UNIDADE)', style: "display: block" %>
+      <%= form.text_field :preco, class: 'form-control' %>
+    </div>
+
+    <div class="col-md-4">
+      <%= form.label 'Ativar preço por Unidade', style: "display: block" %>
+      <%= form.radio_button :preco_unidade, 'true' %> Sim <br>
+      <%= form.radio_button :preco_unidade, 'false', checked: true %> Não
+    </div>
+
+
+<% end %>
+
+  <div class="col-md-4">
+    <%= form.label :quantidade, style: "display: block" %>
+    <%= form.text_field :quantidade, class: 'form-control' %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.submit class: 'btn btn-outline-success' %>
+  </div>
+<% end %>

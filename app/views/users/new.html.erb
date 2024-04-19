@@ -1,0 +1,30 @@
+<h1>Novo usuário</h1>
+
+<div>
+  <%= form_with(model: @user, local: true) do |form| %>
+    <div>
+      <%= form.label :email, style: 'display: block' %>
+      <%= form.text_field :email %>
+    </div>
+
+    <div>
+      <%= form.label 'Senha', style: 'display: block' %>
+      <%= form.password_field :password %>
+    </div>
+
+    <div>
+      <%= form.label 'Confirmar senha', style: 'display: block' %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+<br>
+    <div>
+      <%= form.label 'Usuário Administrador?' %>
+      <%= form.select("admin", [['Sim', true], ['Não', false]], {include_blank: 'Selecione...'}) %>
+
+    </div>
+
+    <div>
+      <%= form.submit class: 'btn btn-outline-success' %>
+    </div>
+  <% end %>
+</div>

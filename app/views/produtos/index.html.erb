@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Produtos</h1>
+
+<div class="table-responsive">
+<table class="text-center table table-striped table-bordered table-hover" id="tabelaProduto">
+  <thead>
+  <tr>
+    <th class="text-center">Produto</th>
+    <th class="text-center">Código</th>
+    <th class="text-center">Descrição</th>
+    <th class="text-center">Preço</th>
+    <th class="text-center">Entrada</th>
+    <th class="text-center">Quantidade Disponível</th>
+    <th class="text-center">Preço/Unidade</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+      <tbody>
+      <tr>
+      <% @produtos.each do |produto| %>
+          <%= render produto %>
+
+          <td id="botao_editar">
+            <%= button_to "Editar", edit_produto_path(produto), class: 'btn btn-outline-info', method: :get %>
+          </td>
+        <td id="botao_mostrar">
+          <%= button_to "Mostrar", produto, class: 'btn btn-outline-dark', method: :get %>
+        </td>
+          </tr>
+
+      <% end %>
+        </tbody>
+</table>
+
+<%= button_to "Novo produto", new_produto_path, class: 'btn btn-outline-success', method: :get %>
+</div>

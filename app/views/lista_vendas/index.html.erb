@@ -1,0 +1,99 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Visualizar Venda</h1>
+
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Peso</th>
+        <th>Preço</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <% @lista_venda.each do |vendas| %>
+          <td><%= vendas.codigo %></td>
+          <td><%= vendas.nome %></td>
+          <td><%= t('valores.peso', value: '%0.3f' %vendas.peso) %></td>
+          <td><%= t('valores.moeda', value: '%0.2f' %vendas.preco) %></td>
+      </tr>
+
+        <% end %>
+        </tbody>
+    </table>
+
+
+    <% quant = [] %>
+    <% cod = [] %>
+    <% @quantidade.each do |pega_quantidade| %>
+      <% quant.push(pega_quantidade.quantidade) %>
+      <% if pega_quantidade.quantidade < 0 %>
+        <% cod.push(pega_quantidade.codigo) %>
+      <% end %>
+    <% end %>
+    <p hidden="hidden" id="quantidade"><%= quant %></p>
+    <p hidden="hidden" id="id"><%= cod %></p>
+
+    <% if @status[0] == 'ABERTO' %>
+    <br>
+    <div id="form_desconto">
+      Desconto: <input type="text" id="desconto">
+      <button class="btn btn-dark" id="submit_desconto">Aplicar Desconto</button>
+    </div>
+    <br>
+    <div class="d-flex flex-row justify-content-end mt-auto">
+      <h3 id="show_desconto"><%= @forma_pagamento[0] %></h3>
+    </div>
+    <% end %>
+    <br>
+    <div class="d-flex flex-row justify-content-end mt-auto">
+      <h3 id="pega_desconto">Forma de Pagamento:</h3> <h3 id="forma_pgto"><%= @forma_pagamento[0] %></h3>
+    </div>
+    <br>
+
+    <% if @forma_pagamento[0] == 'Dinheiro' and @status[0] == 'ABERTO' %>
+      <div class="d-flex flex-row, justify-content-md-end mt-auto">
+        <div id="form_troco">
+          Dinheiro: <input type="text" id="troco">
+          <button class="btn btn-dark" id="submit_troco">Enviar</button>
+        </div>
+      </div>
+      <br>
+    <% end %>
+    <div class="d-flex flex-row justify-content-end mt-auto">
+      <h2>TOTAL: R$</h2><h2 id="total_show"><%= '%0.2f' %@total_rs %></h2>
+    </div>
+
+    <% if @forma_pagamento[0] == 'Dinheiro' %>
+      <div class="d-flex flex-row justify-content-md-end mt-auto">
+        <h2 id="show_troco"></h2>
+      </div>
+    <% end %>
+    <% if @status[0] == 'FECHADO' or @status[0] == 'CANCELADO' %>
+    <div class="d-flex justify-content-md-start mt-auto">
+      <h1>Status: <%= @status[0] %></h1>
+    </div>
+    <% else %>
+
+      <br>
+      <div class="container-flex">
+      <div id="botao_cancelar_venda">
+      <%= button_tag 'Cancelar Venda', id:'submit_botao_cancela', class: 'btn btn-danger', method: :post %>
+      </div>
+      <div id="botao_fechar_venda">
+      <%= button_tag 'Fechar Venda', id:'submit_botao_venda', class: 'btn btn-primary', method: :post %>
+      </div>
+      </div>
+      <% end %>
+  </div>
+</div>
+
+<p hidden id="venda_produto_id"><%= @venda_produto_id %></p>
+<%= button_to 'Voltar', lista_vendas_venda_produtos_url, class: 'btn btn-outline-dark', method: :get %>
+
+<%= javascript_include_tag 'lista_vendas' %>
