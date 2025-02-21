@@ -17,6 +17,7 @@ Caso queira utilizar o sistema, dependências necessárias para o projeto:
 -  Com o Ruby instalado, inicie o CMD (Prompt de Comando) e digite: CD "Caminho do diretório/empresarialBGH" => Note que o "Caminho do diretório" é para ser colocado o caminha que constará onde estiver o diretório do sistema, por exemplo "C:/Users/UserExemplo/empresarialBGH".
 -  Nota: O diretório(pasta) que armazenará o sistema não poderá conter caracteres especiais(~ ´ etc).
 -  Note que o arquivo no caminho => config => database.yml - Pode ser aberto para colocar o usuario e a senha do Banco de Dados SQL nos campos username e password no começo do arquivo
+-  Há também o requisito do ACBrLibSAT para que o mesmo pegue corretamente com o SAT, porém o mesmo requer licensa, portanto o usuário terá que pegar a DLL por conta e colocar dentro do repositório em uma pasta chamada "dll".
 
 ### Após isso, siga os passos a seguir:
 
