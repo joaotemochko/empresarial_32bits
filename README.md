@@ -29,7 +29,7 @@ Caso queira utilizar o sistema, dependências necessárias para o projeto:
 -  AVISO: A utilização sem suporte fica totalmente por conta e risco do usuário caso ocorram problemas de corrompimento do Banco de Dados.
   
 
-* Criado e desenvolvido por João Temochko e Beasts, Goblins and Hellfire Development
+* Criado e desenvolvido por João Temochko.
 
 ## Você está livre para alterar por sua conta e publicar a alteração que fez em seu próprio GitHub com os devidos créditos em seu README.
 * Se não for publicado no Github é dispensado dar os devidos créditos.
